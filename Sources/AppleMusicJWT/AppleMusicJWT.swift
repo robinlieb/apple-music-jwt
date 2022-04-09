@@ -11,7 +11,7 @@ public struct AppleMusicJWT {
         var token: String?
         let header = Header(kid: keyId)
         let claims = AppleMusicJWTClaims(iss: teamId, iat: Date(), exp: Date(timeIntervalSinceNow: exp))
-        var jwt = SwiftJWT.JWT(header: header, claims: claims)
+        var jwt = JWT(header: header, claims: claims)
         
         do {
             guard let key = try String(contentsOf: keyFileUrl).data(using: .utf8) else {
