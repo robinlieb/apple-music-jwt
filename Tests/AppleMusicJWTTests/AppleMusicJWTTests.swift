@@ -1,11 +1,60 @@
 import XCTest
-@testable import apple_music_jwt
+@testable import AppleMusicJWT
 
-final class apple_music_jwtTests: XCTestCase {
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct
-        // results.
-        XCTAssertEqual(apple_music_jwt().text, "Hello, World!")
+final class AppleMusicJWTTests: XCTestCase {
+    
+    var subject: AppleMusicJWT?
+    
+    override func setUp() {
+        super.setUp()
+        self.subject = AppleMusicJWT()
+    }
+    
+    override func tearDown() {
+        self.subject = nil
+        super.tearDown()
+    }
+    
+    func testSucessfulSign() throws {
+        let pathToKey = self.getPath(to: "ec256_key")
+        
+        guard let url = URL(string: pathToKey) else {
+            XCTFail("Could not get URL of key file")
+            return
+        }
+        let jwt = subject?.generateToken(teamId: "12345678", keyId: "87654321", keyFileUrl: url)
+        
+        XCTAssertNotNil(jwt)
+    }
+    
+    func testWrongKeyFormat() {
+        let pathToKey = self.getPath(to: "rsa_key")
+        
+        guard let url = URL(string: pathToKey) else {
+            XCTFail("Could not get URL of key file")
+            return
+        }
+        let jwt = subject?.generateToken(teamId: "12345678", keyId: "87654321", keyFileUrl: url)
+        
+        XCTAssertNil(jwt)
+    }
+    
+    func testUnsucessfulSign() {
+        guard let url = URL(string: "foo") else {
+            XCTFail("Could not get URL of key file")
+            return
+        }
+        
+        let jwt = subject?.generateToken(teamId: "12345678", keyId: "87654321", keyFileUrl: url)
+        
+        XCTAssertNil(jwt)
+    }
+    
+    func getPath(to keyFileName: String) -> String {
+        var pathToKey = #file
+        if pathToKey.hasSuffix("AppleMusicJWTTests.swift") {
+            pathToKey = pathToKey.replacingOccurrences(of: "AppleMusicJWTTests.swift", with: "")
+        }
+        return "file://\(pathToKey)\(keyFileName)"
     }
 }
