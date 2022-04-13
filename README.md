@@ -1,4 +1,4 @@
-# apple-music-jwt
+# AppleMusicJWT
 Library to generate JWT for Apple Music API.
 
 # Getting Started
