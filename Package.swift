@@ -29,6 +29,10 @@ let package = Package(
             ]),
         .testTarget(
             name: "AppleMusicJWTTests",
-            dependencies: ["AppleMusicJWT"]),
+            dependencies: ["AppleMusicJWT"],
+            resources: [
+                .copy("ec256_key"),
+                .copy("rsa_key"),
+            ]),
     ]
 )
