@@ -16,9 +16,7 @@ final class AppleMusicJWTTests: XCTestCase {
     }
     
     func testSucessfulSign() throws {
-        let pathToKey = self.getPath(to: "ec256_key")
-        
-        guard let url = URL(string: pathToKey) else {
+        guard let url = Bundle.module.url(forResource: "ec256_key", withExtension: nil) else {
             XCTFail("Could not get URL of key file")
             return
         }
@@ -28,9 +26,7 @@ final class AppleMusicJWTTests: XCTestCase {
     }
     
     func testWrongKeyFormat() {
-        let pathToKey = self.getPath(to: "rsa_key")
-        
-        guard let url = URL(string: pathToKey) else {
+        guard let url = Bundle.module.url(forResource: "rsa_key", withExtension: nil) else {
             XCTFail("Could not get URL of key file")
             return
         }
@@ -48,13 +44,5 @@ final class AppleMusicJWTTests: XCTestCase {
         let jwt = subject?.generateToken(teamId: "12345678", keyId: "87654321", keyFileUrl: url)
         
         XCTAssertNil(jwt)
-    }
-    
-    func getPath(to keyFileName: String) -> String {
-        var pathToKey = #file
-        if pathToKey.hasSuffix("AppleMusicJWTTests.swift") {
-            pathToKey = pathToKey.replacingOccurrences(of: "AppleMusicJWTTests.swift", with: "")
-        }
-        return "file://\(pathToKey)\(keyFileName)"
     }
 }
