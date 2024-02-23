@@ -33,8 +33,8 @@
         "repositoryURL": "https://github.com/Kitura/KituraContracts.git",
         "state": {
           "branch": null,
-          "revision": "8a4778c3aa7833e9e1af884e8819d436c237cd70",
-          "version": "1.2.201"
+          "revision": "6edf7ac3dd2b3a2c61284778d430bbad7d8a6f23",
+          "version": "2.0.1"
         }
       },
       {
@@ -42,8 +42,17 @@
         "repositoryURL": "https://github.com/Kitura/LoggerAPI.git",
         "state": {
           "branch": null,
-          "revision": "e82d34eab3f0b05391082b11ea07d3b70d2f65bb",
-          "version": "1.9.200"
+          "revision": "4e6b45e850ffa275e8e26a24c6454fd709d5b6ac",
+          "version": "2.0.0"
+        }
+      },
+      {
+        "package": "OpenSSL",
+        "repositoryURL": "https://github.com/Kitura/OpenSSL.git",
+        "state": {
+          "branch": null,
+          "revision": "5dc8cb4f971135c17343e3c6df4f28904a0600e2",
+          "version": "2.3.1"
         }
       },
       {
@@ -51,8 +60,8 @@
         "repositoryURL": "https://github.com/Kitura/Swift-JWT.git",
         "state": {
           "branch": null,
-          "revision": "47c6384b6923e9bb1f214d2ba4bd52af39440588",
-          "version": "3.6.201"
+          "revision": "f68ec28fbd90a651597e9e825ea7f315f8d52a1f",
+          "version": "4.0.1"
         }
       },
       {
